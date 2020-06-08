@@ -1,3 +1,4 @@
 ## Contact Manager (A-T-M)
 
-source: https://www.youtube.com/playlist?list=PL6WnVoBkDfDRx5CkEgaMWdTDzzfatZWbA
+playlist: https://www.youtube.com/playlist?list=PL6WnVoBkDfDRx5CkEgaMWdTDzzfatZWbA
+source: https://github.com/yassssser/contact-management-in-React-Redux
