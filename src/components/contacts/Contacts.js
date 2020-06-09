@@ -1,32 +1,15 @@
-import React, { Component } from 'react';
-import Contact from './Contact';
+import React, { Component } from "react";
+import Contact from "./Contact";
+
+import { connect } from "react-redux";
 
 class Contacts extends Component {
-  state = {
-    contacts: [
-      {
-        id: 1,
-        name: 'yasweb',
-        email: 'yasweb@gmail.com',
-        phone: '0666666'
-      },
-      {
-        id: 2,
-        name: 'yasweb react',
-        email: 'react@gmail.com',
-        phone: '07777777777'
-      },
-      {
-        id: 3,
-        name: 'yasweb symfony',
-        email: 'symfony@gmail.com',
-        phone: '08888888'
-      }
-    ]
-  };
+  componentDidMount() {
+    this.props.getContacts;
+  }
 
   render() {
-    const { contacts } = this.state;
+    const { contacts } = this.props;
     return (
       <React.Fragment>
         <h1 className="display-4 mb-2">
@@ -40,4 +23,20 @@ class Contacts extends Component {
   }
 }
 
-export default Contacts;
+const mapStateToProps = state => {
+  return {
+    contacts: state.myContact.contacts
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getContacts: () => {
+      dispatch({
+        type: "GET_contacts"
+      });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);

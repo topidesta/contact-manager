@@ -3,5 +3,5 @@ import contactReducer from "./contactReducer";
 
 // objek contact
 export default combineReducers({
-  contact: contactReducer
+  myContact: contactReducer
 });

@@ -17,12 +17,20 @@ const initState = {
       name: "yasweb symfony",
       email: "symfony@gmail.com",
       phone: "08888888"
+    },
+    {
+      id: 4,
+      name: "yasweb flutter",
+      email: "symfony@gmail.com",
+      phone: "08888888"
     }
   ]
 };
 
 export default function(state = initState, action) {
   switch (action.type) {
+    case "GET_contacts":
+      return { ...state };
     default:
       return state;
   }
