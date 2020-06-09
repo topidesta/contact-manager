@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+// call redux and connect to store
+import { connect } from "react-redux";
+import { deleteContact } from "../../actions";
 
 class Contact extends Component {
   state = {
@@ -8,7 +12,7 @@ class Contact extends Component {
   };
 
   onDeleteClick = id => {
-    //// DELETE CONTACT ////
+    this.props.deleteContact(id);
   };
 
   render() {
@@ -18,7 +22,7 @@ class Contact extends Component {
     return (
       <div className="card card-body mb-3">
         <h4>
-          {name}{' '}
+          {name}{" "}
           <i
             onClick={() =>
               this.setState({
@@ -26,21 +30,21 @@ class Contact extends Component {
               })
             }
             className="fas fa-sort-down"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           />
           <i
             className="fas fa-times"
-            style={{ cursor: 'pointer', float: 'right', color: 'red' }}
+            style={{ cursor: "pointer", float: "right", color: "red" }}
             onClick={this.onDeleteClick.bind(this, id)}
           />
           <Link to={`contact/edit/${id}`}>
             <i
               className="fas fa-pencil-alt"
               style={{
-                cursor: 'pointer',
-                float: 'right',
-                color: 'orange',
-                marginRight: '1rem'
+                cursor: "pointer",
+                float: "right",
+                color: "orange",
+                marginRight: "1rem"
               }}
             />
           </Link>
@@ -60,4 +64,4 @@ Contact.propTypes = {
   contact: PropTypes.object.isRequired
 };
 
-export default Contact;
+export default connect(null, { deleteContact })(Contact);
